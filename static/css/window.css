@@ -1,0 +1,192 @@
+body{
+    margin:0;
+    padding:0;
+    font-family:sans-serif;
+    background: url("../img/img.png") ;
+    background-size:110% ;
+}
+.box{
+    width:300px;
+    padding:40px;
+    position:absolute;
+    top:50%;
+    left:50%;
+translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+    background:#19191970;
+    text-align:center;
+}
+.box h1{
+    color:white;
+    text-transform:uppercase;
+    font-weight:500;
+}
+.box input[type = "text"],.box input[type = "password"]{
+    border:0;
+    background:none;
+    display:block;
+    margin:20px auto;
+    text-align:center;
+    border:2px solid #3498db;
+    padding:14px 10px;
+    width:200px;
+    outline:none;
+    color:white;
+    border-radius:24px;
+    transition:0.25s;
+}
+.box input[type = "text"]:focus,.box input[type = "password"]:focus{
+    white:280px;
+    border-color:#2ecc71;
+}
+.box input[type = "submit"]{
+    border:0;
+    background:none;
+    display:block;
+    margin:20px auto;
+    text-align:center;
+    border:2px solid #3498db;
+    padding:14px 40px;
+    outline:none;
+    color:white;
+    border-radius:24px;
+    transition:1s;
+    cursor:pointer;
+}
+.box input[type="submit"]:hover{
+    background:#2ecc71;
+}
+
+
+.boxmain{
+    width:300px;
+    padding:500px;
+    position:absolute;
+    top:50%;
+    left:50%;
+translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+    background:#19191970;
+    text-align:center;
+}
+.boxmain h1{
+    color: greenyellow;
+    text-transform:uppercase;
+    font-weight:1000;
+    text-align: left;
+}
+.boxmain input[type = "text"],.box input[type = "password"]{
+    border:0;
+    background:none;
+    display:block;
+    margin:20px auto;
+    text-align:center;
+    border:2px solid #3498db;
+    padding:14px 10px;
+    width:200px;
+    outline:none;
+    color:white;
+    border-radius:24px;
+    transition:0.25s;
+}
+.boxmain input[type = "text"]:focus,.box input[type = "password"]:focus{
+    white:280px;
+    border-color:#2ecc71;
+}
+.boxmain input[type = "submit1"]{
+    position: absolute;
+    left: 200px;
+    width: 170px;
+    height: 170px;
+    top: 100px;
+    border:0;
+    background:none;
+    display:block;
+    margin:20px auto;
+    text-align:center;
+    border:2px solid #3498db;
+    padding:50px 100px;
+    outline:none;
+    color:white;
+    border-radius:24px;
+    transition:1s;
+    cursor:pointer;
+}
+.boxmain input[type="submit1"]:hover{
+    background:#2ecc71;
+}
+.boxmain input[type = "submit2"]{
+    position: absolute;
+    right: 200px;
+    width: 170px;
+    height: 170px;
+    top:100px;
+    border:0;
+    background:none;
+    display:block;
+    margin:20px auto;
+    text-align:center;
+    border:2px solid #3498db;
+    padding:50px 100px;
+    outline:none;
+    color:white;
+    border-radius:24px;
+    transition:1s;
+    cursor:pointer;
+
+}
+.boxmain input[type="submit2"]:hover{
+    background: #e60976;
+}
+.boxmain input[type = "submit3"]{
+    position: absolute;
+    left: 200px;
+    width: 170px;
+    height: 170px;
+    top: 450px;
+    border:0;
+    background:none;
+    display:block;
+    margin:20px auto;
+    text-align:center;
+    border:2px solid #3498db;
+    padding:50px 100px;
+    outline:none;
+    color:white;
+    border-radius:24px;
+    transition:1s;
+    cursor:pointer;
+}
+.boxmain input[type="submit3"]:hover{
+    background: #1ce2df;
+}
+.boxmain input[type = "submit4"]{
+    position: absolute;
+    right: 200px;
+    width: 170px;
+    height: 170px;
+    top:450px;
+    border:0;
+    background:none;
+    display:block;
+    margin:20px auto;
+    text-align:center;
+    border:2px solid #3498db;
+    padding:50px 100px;
+    outline:none;
+    color:white;
+    border-radius:24px;
+    transition:1s;
+    cursor:pointer;
+
+}
+.boxmain input[type="submit4"]:hover{
+    background: #fbd634;
+}
+
+
+

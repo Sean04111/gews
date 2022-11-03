@@ -13,5 +13,5 @@ func init() {
 	beego.Router("/", &controllers.LoginController{}, "get:Login")
 	//for the register site
 	beego.AutoRouter(&controllers.RegisterController{})
-
+	beego.AutoRouter(&controllers.ChatController{})
 }

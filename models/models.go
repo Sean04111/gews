@@ -13,7 +13,13 @@ type News struct {
 	Article    string `json:"article"orm:"column(article)"` //for the links of each
 	Title      string `json:"title"orm:"column(title)"`     //for the links of each
 }
+type Messages struct {
+	MessageId   int    `orm:"auto" orm:"column(messageid)"`
+	SpeakerName string `orm:"column(speakername)"`
+	Content     string `orm:"column(content)"`
+	Time        string `orm:"column(time)"`
+}
 
 func init() {
-	orm.RegisterModel(new(Users), new(News))
+	orm.RegisterModel(new(Users), new(News), new(Messages))
 }

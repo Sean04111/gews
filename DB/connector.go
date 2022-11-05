@@ -20,7 +20,7 @@ func init() {
 	if err != nil {
 		fmt.Println("Register DataBase error : ", err)
 	}
-	orm.RunSyncdb("default", true, false)
+	//orm.RunSyncdb("default", true, false)
 }
 
 //

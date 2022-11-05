@@ -2,9 +2,10 @@ package chat
 
 import (
 	"context"
-	"database/sql"
 	"fmt"
 	pb "gews/chat/proto"
+	"gews/models"
+	"github.com/beego/beego/v2/client/orm"
 	_ "github.com/go-sql-driver/mysql"
 	"google.golang.org/grpc"
 	"strconv"
@@ -14,12 +15,6 @@ import (
 type User struct {
 	ClientChat pb.ChatClient
 	Self       *pb.User
-}
-type Messages struct {
-	MessageId   int
-	SpeakerName string
-	Content     string
-	Time        string
 }
 
 //you can set you database by these vars
@@ -54,22 +49,22 @@ func (this *User) GetMassFromName(speakername string) *pb.Message {
 
 	return find
 }
-func (this *User) GetAllMass(maxnum int) []Messages {
-	var Re []Messages
-	db, err := sql.Open("mysql",
-		fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8mb4&timeout=5000ms",
-			DB_username, DB_password, DB_host, DB_port, DB_database))
-	if err != nil {
-		fmt.Println("herr", err)
-	}
-	defer db.Close()
-	for i := 1; i <= maxnum; i++ {
-		var kv Messages
-		err = db.QueryRow("SELECT message_id, speakername, content, time FROM messages where message_id = ? ", i).Scan(&kv.MessageId, &kv.SpeakerName, &kv.Content, &kv.Time)
+
+//The messages here is backwards
+//The latest messages will be placed at the first place !!
+func (this *User) GetAllMass() []models.Messages {
+	var Re []models.Messages
+	for i := 50; i >= 1; i-- {
+		var kv models.Messages
+		o := orm.NewOrm()
+		qsu := o.QueryTable("messages")
+		_, err := qsu.Filter("message_id", i).All(&kv)
 		if err != nil {
 			continue
 		}
-		Re = append(Re, kv)
+		if kv.MessageId != 0 {
+			Re = append(Re, kv)
+		}
 	}
 	return Re
 }
@@ -83,6 +78,29 @@ func NewUser(id int, name string, grpcclientconn *grpc.ClientConn) *User {
 	cliC := pb.NewChatClient(grpcclientconn)
 	Sean.ClientChat = cliC
 	return Sean
+}
+
+var SqlName string = "sql_news"
+var Password string = "666"
+var Ip string = "121.36.131.50:3306"
+var DBname string = "sql_news"
+
+func init() {
+
+	err := orm.RegisterDriver("mysql", orm.DRMySQL)
+	if err != nil {
+		fmt.Println("[orm] Register Driver error : ", err)
+	}
+	err = orm.RegisterDataBase("default", "mysql", SqlName+":"+Password+"@tcp("+Ip+")/"+DBname+"?charset=utf8")
+	if err != nil {
+		fmt.Println("[orm] Register Data Base error : ", err)
+	}
+	/*
+		err = orm.RunSyncdb("default", false, false)
+		if err != nil {
+			fmt.Println("[orm] Create Table error : ", err)
+		}
+	*/
 }
 
 /*
